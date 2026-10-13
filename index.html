@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7d8e9">
+  <meta name="description" content="Cuentos, juegos y actividades educativas para preescolar.">
+
+  <title>Pequeños Exploradores | Aprende jugando</title>
+
+  <style>
+    :root {
+      --rosa: #f7cde1;
+      --rosa-claro: #fff0f7;
+      --morado: #7650a0;
+      --verde: #cceedd;
+      --verde-claro: #effaf2;
+      --amarillo: #ffe8ad;
+      --texto: #40384c;
+      --fondo: #fffaf6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 16px;
+      padding: 12px 18px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px #7650a025;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 5%;
+      background: #ffffffed;
+      box-shadow: 0 4px 18px #624b7410;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--morado);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .brand .rana {
+      font-size: 45px;
+    }
+
+    .brand small {
+      display: block;
+      color: #438353;
+    }
+
+    .navlinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .navlinks a {
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .navlinks a:hover {
+      background: var(--rosa-claro);
+      color: var(--morado);
+    }
+
+    .hero {
+      padding: 55px 6%;
+      background: linear-gradient(130deg, #fff0f6, #fff9e9, #eaf9f1);
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .hero-art {
+      text-align: center;
+    }
+
+    .hero-frog {
+      font-size: clamp(100px, 18vw, 190px);
+      animation: flotar 3s ease-in-out infinite;
+    }
+
+    @keyframes flotar {
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .hero h1 {
+      color: var(--morado);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .hero h1 span {
+      color: #28824d;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+    }
+
+    .primary {
+      background: #ef4f8c;
+      color: white;
+    }
+
+    .secondary {
+      background: #e9ddfa;
+      color: var(--morado);
+    }
+
+    .green {
+      background: var(--verde);
+      color: #226d3d;
+    }
+
+    .yellow {
+      background: var(--amarillo);
+      color: #825018;
+    }
+
+    .section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 38px 22px;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-head h2 {
+      color: var(--morado);
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    .pathways,
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .path-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px;
+      border-radius: 24px;
+    }
+
+    .path-card .big {
+      font-size: 3rem;
+    }
+
+    .pinkbg {
+      background: var(--rosa-claro);
+    }
+
+    .greenbg {
+      background: var(--verde-claro);
+    }
+
+    .yellowbg {
+      background: #fff6df;
+    }
+
+    .panel,
+    .feature {
+      padding: 22px;
+      background: white;
+      border-radius: 22px;
+      border: 1px solid #f0e5f0;
+      box-shadow: 0 8px 24px #5b3b6b0d;
+      min-width: 0;
+    }
+
+    .panel h2,
+    .feature h3 {
+      color: var(--morado);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .feature .emoji {
+      font-size: 2.8rem;
+    }
+
+    .activity {
+      padding: 16px;
+      margin: 14px 0;
+      border-radius: 18px;
+      background: #fff8e7;
+    }
+
+    .activity:nth-child(even) {
+      background: #f0faf3;
+    }
+
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .choices button {
+      background: white;
+      border: 2px solid #eadff1;
+      color: var(--texto);
+    }
+
+    .feedback {
+      font-weight: bold;
+      min-height: 26px;
+    }
+
+    .good {
+      color: #25834b;
+    }
+
+    .try {
+      color: #b36a2d;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 18px;
+      margin-top: 22px;
+      background: white;
+      border: 1px solid #f5e3b5;
+      border-radius: 22px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--morado);
+      font-size: 1.4rem;
+    }
+
+    .progress-wrap {
+      height: 14px;
+      overflow: hidden;
+      background: #f0e8f7;
+      border-radius: 20px;
+      margin: 12px 0;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #ef78ac, #8b6bc0);
+      transition: width 0.3s;
+    }
+
+    .story-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .story {
+      padding: 15px;
+      border-radius: 16px;
+      background: var(--rosa-claro);
+    }
+
+    .story:nth-child(even) {
+      background: var(--verde-claro);
+    }
+
+    .movement-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .move-card {
+      padding: 18px;
+      text-align: center;
+      border-radius: 20px;
+      background: #fff5df;
+    }
+
+    .move-card:nth-child(2) {
+      background: var(--verde-claro);
+    }
+
+    .move-card:nth-child(3) {
+      background: var(--rosa-claro);
+    }
+
+    .move-card .emoji {
+      font-size: 3rem;
+    }
+
+    .timer {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--morado);
+      text-align: center;
+    }
+
+    .routine {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .routine label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 12px;
+      background: #f7f0fb;
+    }
+
+    .routine input {
+      width: 18px;
+      height: 18px;
+    }
+
+    .art-canvas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 130px;
+      margin: 12px 0;
+      border: 2px dashed #d7c2e5;
+      border-radius: 16px;
+      background: #fffafc;
+      font-size: 3rem;
+    }
+
+    .footer-cta {
+      margin: 20px;
+      padding: 25px;
+      text-align: center;
+      border-radius: 24px;
+      background: linear-gradient(100deg, #ffe5f1, #f1e9ff, #e6f8ec);
+    }
+
+    .footer-cta h2 {
+      color: #8d3f85;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 30px 6%;
+      background: #eee6f6;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    footer h3 {
+      color: var(--morado);
+    }
+
+    footer a {
+      display: block;
+      padding: 3px 0;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 800px) {
+      .hero-inner,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .pathways,
+      .features,
+      .movement-list {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .topbar {
+        justify-content: center;
+      }
+
+      .navlinks {
+        justify-content: center;
+      }
+
+      .navlinks a {
+        font-size: 0.78rem;
+      }
+
+      .section {
+        padding: 28px 14px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .story-list,
+      .routine,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .path-card {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="#inicio">
+      <span class="rana">🐸</span>
+      <span>Pequeños<small>Exploradores</small></span>
+    </a>
+
+    <nav class="navlinks">
+      <a href="#inicio">🏡 Inicio</a>
+      <a href="#docentes">👩🏻‍🏫 Docentes</a>
+      <a href="#juegos">🧸 Juegos</a>
+      <a href="#cuentos">📚 Cuentos</a>
+      <a href="#emociones">💗 Emociones</a>
+      <a href="#movimiento">🏃 Movimiento</a>
+      <a href="#recursos">🎨 Recursos</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div class="hero-art">
+          <div>⭐ 🌈 🦋</div>
+          <div class="hero-frog">🐸</div>
+          <div>🌿 🌼 🌷 🍄</div>
+        </div>
+
+        <div class="hero-copy">
+          <h1>¡Hola, pequeños <span>exploradores!</span></h1>
+          <p>
+            Un mundo lleno de cuentos, juegos y aventuras
+            para aprender mientras nos divertimos.
+            ¡Cada día podemos descubrir algo nuevo! 🌈
+          </p>
+          <a href="#caminos">
+            <button class="primary">¡Comencemos la aventura! 🚀</button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="caminos">
+      <div class="section-head">
+        <h2>🌟 Elige tu camino</h2>
+        <p>Hay muchas maneras de aprender y divertirse.</p>
+      </div>
+
+      <div class="pathways">
+        <article class="path-card pinkbg">
+          <span class="big">👩🏻‍🏫</span>
+          <div>
+            <h3>Espacio docente</h3>
+            <p>Ideas y recursos para acompañar el aprendizaje.</p>
+            <a href="#docentes"><button class="secondary">Explorar</button></a>
+          </div>
+        </article>
+
+        <article class="path-card greenbg">
+          <span class="big">🧸</span>
+          <div>
+            <h3>¡Quiero aprender!</h3>
+            <p>Juegos, cuentos y retos para aprender jugando.</p>
+            <a href="#juegos"><button class="green">Jugar</button></a>
+          </div>
+        </article>
+
+        <article class="path-card yellowbg">
+          <span class="big">🏃🏻</span>
+          <div>
+            <h3>Zona de movimiento</h3>
+            <p>Pausas activas para mover el cuerpo.</p>
+            <a href="#movimiento"><button class="yellow">¡Moverme!</button></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="points">0 ⭐</strong>
+          <span>Puntos ganados</span>
+        </div>
+        <div class="stat">
+          <strong id="completed">0</strong>
+          <span>Retos completados</span>
+        </div>
+        <div class="stat">
+          <strong id="sticker">🌱 Explorador</strong>
+          <span>Tu insignia</span>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:18px">
+        <h3>🏆 Mi progreso</h3>
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p id="progressText">¡Comienza a jugar y gana tus primeras estrellas!</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>✨ ¿Qué vamos a descubrir hoy?</h2>
+        <p>Aprendemos jugando, imaginando y compartiendo.</p>
+      </div>
+
+      <div class="features">
+        <article class="feature">
+          <div class="emoji">📚</div>
+          <h3>Cuentos mágicos</h3>
+          <p>Historias para imaginar, compartir y soñar.</p>
+          <a href="#cuentos"><button>Ver cuentos</button></a>
+        </article>
+
+        <article class="feature">
+          <div class="emoji">🎨</div>
+          <h3>Juegos divertidos</h3>
+          <p>Aprende números, colores, letras y figuras.</p>
+          <a href="#juegos"><button>Jugar ahora</button></a>
+        </article>
+
+        <article class="feature">
+          <div class="emoji">💗</div>
+          <h3>Mundo de emociones</h3>
+          <p>Descubre lo que sientes y aprende a expresarlo.</p>
+          <a href="#emociones"><button>Explorar</button></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="docentes">
+      <div class="section-head">
+        <h2>👩🏻‍🏫 Espacio docente</h2>
+        <p>Actividades sencillas para trabajar con niños de preescolar.</p>
+      </div>
+
+      <div class="content-grid">
+        <article class="panel">
+          <h2>📖 Actividad: La ranita curiosa</h2>
+          <p><b>Objetivo:</b> Estimular la imaginación, la escucha y la expresión oral.</p>
+          <p><b>Materiales:</b> Un cuento ilustrado o imágenes de animales.</p>
+          <p><b>Duración:</b> 15 minutos.</p>
+          <p><b>Pasos:</b></p>
+          <ol>
+            <li>Invita a los niños a sentarse cómodamente.</li>
+            <li>Presenta las imágenes del cuento.</li>
+            <li>Lee la historia con diferentes voces.</li>
+            <li>Pregunta qué creen que sucederá después.</li>
+            <li>Permite que compartan sus ideas.</li>
+          </ol>
+        </article>
+
+        <article class="panel">
+          <h2>✂️ Taller de colores y figuras</h2>
+          <p><b>Objetivo:</b> Reconocer figuras geométricas y colores.</p>
+          <p><b>Materiales:</b> Papel, colores, pegamento escolar y tijeras de punta redonda bajo supervisión.</p>
+          <p><b>Duración:</b> 20 minutos.</p>
+          <p><b>Pasos:</b></p>
+          <ol>
+            <li>Presenta círculos, cuadrados y triángulos.</li>
+            <li>Invita a los niños a nombrar los colores.</li>
+            <li>Propón crear un dibujo con las figuras.</li>
+            <li>Permite que cada niño explique su creación.</li>
+          </ol>
+        </article>
+
+        <article class="panel">
+          <h2>💗 Reconocemos emociones</h2>
+          <p><b>Objetivo:</b> Identificar emociones y desarrollar la empatía.</p>
+          <p><b>Materiales:</b> Tarjetas con caras y expresiones.</p>
+          <p><b>Actividad:</b> Muestra una emoción y pregunta en qué situaciones podrían sentirla los niños. Escucha sin juzgar y recuerda que todas las emociones merecen respeto.</p>
+        </article>
+
+        <article class="panel">
+          <h2>📝 Crea tu propia actividad</h2>
+          <p>Completa los campos para organizar una nueva propuesta educativa.</p>
+
+          <form id="activityForm">
+            <p>
+              <label for="actName">Nombre de la actividad</label>
+              <input id="actName" required placeholder="Ej. Buscando colores">
+            </p>
+
+            <p>
+              <label for="actArea">Área de aprendizaje</label>
+              <select id="actArea">
+                <option>Lenguaje</option>
+                <option>Matemáticas</option>
+                <option>Arte</option>
+                <option>Emociones</option>
+                <option>Movimiento</option>
+                <option>Exploración del entorno</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="actGoal">Objetivo</label>
+              <textarea id="actGoal" required placeholder="¿Qué aprenderán los niños?"></textarea>
+            </p>
+
+            <p>
+              <label for="actMaterials">Materiales</label>
+              <input id="actMaterials" placeholder="Ej. Papel y colores">
+            </p>
+
+            <button class="secondary" type="submit">Crear actividad ✨</button>
+          </form>
+
+          <div id="createdActivity" class="activity" hidden></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="juegos">
+      <div class="section-head">
+        <h2>🧸 ¡Vamos a jugar y aprender!</h2>
+        <p>Responde las preguntas y gana estrellas.</p>
+      </div>
+
+      <div class="panel">
+        <div class="activity">
+          <h3>🔢 Juego de números</h3>
+          <p>¿Cuánto es 2 + 1?</p>
+          <div class="choices">
+            <button data-game="number" data-answer="2">2</button>
+            <button data-game="number" data-answer="3">3</button>
+            <button data-game="number" data-answer="4">4</button>
+          </div>
+          <p id="feedback-number" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="activity">
+          <h3>🎨 Juego de colores</h3>
+          <p>¿De qué color es una banana madura?</p>
+          <div class="choices">
+            <button data-game="color" data-answer="azul">💙 Azul</button>
+            <button data-game="color" data-answer="amarillo">💛 Amarillo</button>
+            <button data-game="color" data-answer="rojo">❤️ Rojo</button>
+          </div>
+          <p id="feedback-color" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="activity">
+          <h3>🔺 Juego de figuras</h3>
+          <p>¿Cuál figura tiene tres lados?</p>
+          <div class="choices">
+            <button data-game="shape" data-answer="circulo">⚪ Círculo</button>
+            <button data-game="shape" data-answer="triangulo">🔺 Triángulo</button>
+            <button data-game="shape" data-answer="cuadrado">🟦 Cuadrado</button>
+          </div>
+          <p id="feedback-shape" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="activity">
+          <h3>🔤 Juego de letras</h3>
+          <p>¿Con qué letra comienza la palabra SOL?</p>
+          <div class="choices">
+            <button data-game="letter" data-answer="m">M</button>
+            <button data-game="letter" data-answer="s">S</button>
+            <button data-game="letter" data-answer="p">P</button>
+          </div>
+          <p id="feedback-letter" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="activity">
+          <h3>🐾 Adivina el animal</h3>
+          <p>¿Qué animal dice miau?</p>
+          <div class="choices">
+            <button data-game="animal" data-answer="perro">🐶 Perro</button>
+            <button data-game="animal" data-answer="gato">🐱 Gato</button>
+            <button data-game="animal" data-answer="vaca">🐮 Vaca</button>
+          </div>
+          <p id="feedback-animal" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <button id="resetGames" class="secondary">Volver a jugar 🔄</button>
+      </div>
+    </section>
+
+    <section class="section" id="cuentos">
+      <div class="section-head">
+        <h2>📚 Biblioteca de cuentos</h2>
+        <p>Historias que nos ayudan a imaginar, pensar y sentir.</p>
+      </div>
+
+      <div class="story-list">
+        <article class="story">
+          <h3>🐊 Cocodrilo que no le gustaba el agua</h3>
+          <p>Una historia sobre aceptarnos como somos y descubrir nuestras diferencias.</p>
+        </article>
+
+        <article class="story">
+          <h3>🐮 La vaca que se subió a un árbol</h3>
+          <p>Una aventura sobre la imaginación, la curiosidad y creer en nuestras ideas.</p>
+        </article>
+
+        <article class="story">
+          <h3>🏷️ Fuera etiquetas</h3>
+          <p>Una invitación a respetar a los demás sin juzgarlos por sus diferencias.</p>
+        </article>
+
+        <article class="story">
+          <h3>💗 Corazón y la botella</h3>
+          <p>Una historia para conversar sobre las emociones y recuperar la curiosidad.</p>
+        </article>
+
+        <article class="story">
+          <h3>🦁 El enorme y malvado Feroz</h3>
+          <p>Un cuento para imaginar aventuras y conversar sobre los personajes.</p>
+        </article>
+
+        <article class="story">
+          <h3>🐭 Dos ratones, una rata y un queso</h3>
+          <p>Una oportunidad para hablar sobre compartir, convivir y resolver conflictos.</p>
+        </article>
+      </div>
+
+      <p class="note">Puedes buscar estos títulos en tu biblioteca escolar para leerlos con los niños.</p>
+    </section>
+
+    <section class="section" id="emociones">
+      <div class="section-head">
+        <h2>💗 Nuestro rincón de las emociones</h2>
+        <p>No hay emociones malas: todas nos comunican algo.</p>
+      </div>
+
+      <div class="panel">
+        <h3>¿Cómo te sientes hoy?</h3>
+        <p>Elige la carita que más se parece a lo que sientes.</p>
+
+        <div class="choices emotion-buttons">
+          <button data-feeling="😊 Feliz">😊 Feliz</button>
+          <button data-feeling="😢 Triste">😢 Triste</button>
+          <button data-feeling="😡 Enojado">😡 Enojado</button>
+          <button data-feeling="😨 Asustado">😨 Asustado</button>
+          <button data-feeling="😌 Tranquilo">😌 Tranquilo</button>
+          <button data-feeling="🤩 Emocionado">🤩 Emocionado</button>
+        </div>
+
+        <div id="emotionResult" class="activity" aria-live="polite">
+          ¡Puedes contar cómo te sientes cuando estés preparado! 💕
+        </div>
+
+        <h3>🌼 Respiramos con calma</h3>
+        <p>Cuando necesites descansar, respira suavemente a tu propio ritmo.</p>
+        <button id="breathBtn" class="green">Hacer una pausa 🌿</button>
+        <p id="breathResult" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="section" id="movimiento">
+      <div class="section-head">
+        <h2>🏃 Zona de movimiento</h2>
+        <p>¡Activemos nuestro cuerpo con pequeños retos!</p>
+      </div>
+
+      <div class="movement-list">
+        <article class="move-card">
+          <div class="emoji">🦋</div>
+          <h3>Mariposas al vuelo</h3>
+          <p>Abre y cierra los brazos como alas durante 20 segundos.</p>
+        </article>
+
+        <article class="move-card">
+          <div class="emoji">🐸</div>
+          <h3>Saltos de ranita</h3>
+          <p>Haz cinco saltitos suaves en tu lugar, dejando espacio alrededor.</p>
+        </article>
+
+        <article class="move-card">
+          <div class="emoji">🌳</div>
+          <h3>Árbol que se mueve</h3>
+          <p>Estira los brazos hacia arriba y balancéate suavemente.</p>
+        </article>
+
+        <article class="move-card">
+          <div class="emoji">🚂</div>
+          <h3>El tren imaginario</h3>
+          <p>Camina despacio como un tren y detente cuando alguien diga ¡estación!</p>
+        </article>
+
+        <article class="move-card">
+          <div class="emoji">🍋</div>
+          <h3>Baile del limoncito</h3>
+          <p>Mueve los hombros, las manos y los pies con una canción infantil.</p>
+        </article>
+
+        <article class="move-card">
+          <div class="emoji">🍎</div>
+          <h3>Estatuas de frutas</h3>
+          <p>Imagina una fruta y quédate quieto como una estatua.</p>
+        </article>
+      </div>
+
+      <div class="panel" style="margin-top:20px;text-align:center">
+        <h3>⏱️ Pausa activa de un minuto</h3>
+        <p>Busca un espacio seguro y evita empujar o correr cerca de tus compañeros.</p>
+        <div class="timer" id="timerDisplay">01:00</div>
+        <button id="startTimer" class="primary">¡Empezar! ▶</button>
+        <button id="pauseTimer" class="secondary">Pausar ⏸</button>
+        <button id="resetTimer" class="yellow">Reiniciar ↻</button>
+        <p id="timerMessage" class="feedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="section" id="recursos">
+      <div class="section-head">
+        <h2>🎨 Más formas de aprender</h2>
+        <p>Organiza tu día y deja volar tu imaginación.</p>
+      </div>
+
+      <div class="content-grid">
+        <article class="panel">
+          <h2>🗓️ Mi rutina de hoy</h2>
+          <p>Marca las actividades que ya realizaste.</p>
+
+          <div class="routine">
+            <label><input type="checkbox" class="routine-check"> 📚 Leer un cuento</label>
+            <label><input type="checkbox" class="routine-check"> 🎨 Crear algo</label>
+            <label><input type="checkbox" class="routine-check"> 🏃 Mover el cuerpo</label>
+            <label><input type="checkbox" class="routine-check"> 💗 Nombrar una emoción</label>
+            <label><input type="checkbox" class="routine-check"> 🔢 Resolver un reto</label>
+            <label><input type="checkbox" class="routine-check"> 🤝 Ayudar a alguien</label>
+            <label><input type="checkbox" class="routine-check"> 🌿 Explorar la naturaleza</label>
+            <label><input type="checkbox" class="routine-check"> 🎵 Cantar una canción</label>
+          </div>
+
+          <p id="routineResult" class="feedback">¡Vamos a comenzar! 🌱</p>
+          <button id="clearRoutine" class="secondary">Desmarcar todo</button>
+        </article>
+
+        <article class="panel">
+          <h2>🖍️ Galería de imaginación</h2>
+          <p>Elige una idea para dibujar en una hoja.</p>
+
+          <div class="art-canvas" id="artPreview">🌞 🌷 🦋</div>
+
+          <div class="choices">
+            <button data-art="0">Un jardín 🌷</button>
+            <button data-art="1">El espacio 🚀</button>
+            <button data-art="2">El mar 🐠</button>
+            <button data-art="3">Mi hogar 🏡</button>
+          </div>
+
+          <p id="artIdea">¡Cada dibujo es único y especial!</p>
+          <button id="newArt" class="green">Dame otra idea 🎲</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="footer-cta">
+        <div style="font-size:3rem">🐸 💖 🌈</div>
+        <h2>¡Aprender, imaginar y crecer juntos!</h2>
+        <p>Cada pequeño paso te convierte en un gran explorador.</p>
+        <a href="#inicio"><button class="primary">Volver al inicio ↑</button></a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="brand">
+          <span class="rana">🐸</span>
+          <span>Pequeños<small>Exploradores</small></span>
+        </div>
+        <p>Un espacio alegre para aprender, jugar y crecer juntos. 🌈</p>
+      </div>
+
+      <div>
+        <h3>Explora</h3>
+        <a href="#inicio">Inicio</a>
+        <a href="#docentes">Espacio docente</a>
+        <a href="#juegos">Juegos educativos</a>
+        <a href="#movimiento">Pausas activas</a>
+      </div>
+
+      <div>
+        <h3>Recursos</h3>
+        <a href="#cuentos">Cuentos</a>
+        <a href="#emociones">Emociones</a>
+        <a href="#recursos">Rutinas y arte</a>
+        <p>© <span id="year"></span> Pequeños Exploradores</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const $ = id => document.getElementById(id);
+
+      const correct = {
+        number: "3",
+        color: "amarillo",
+        shape: "triangulo",
+        letter: "s",
+        animal: "gato"
+      };
+
+      const solved = new Set();
+      let points = 0;
+
+      function updateStats() {
+        $("points").textContent = points + " ⭐";
+        $("completed").textContent = solved.size;
+
+        $("sticker").textContent =
+          solved.size >= 5 ? "🏆 Experto" :
+          solved.size >= 3 ? "⭐ Curioso" :
+          "🌱 Explorador";
+
+        $("progressBar").style.width =
+          (solved.size / 5 * 100) + "%";
+
+        $("progressText").textContent =
+          solved.size >= 5
+            ? "¡Completaste todos los retos! ¡Eres un gran explorador! 🎉"
+            : `Has completado ${solved.size} de 5 retos. ¡Sigue explorando!`;
+      }
+
+      document.querySelectorAll("[data-game]").forEach(button => {
+        button.addEventListener("click", () => {
+          const game = button.dataset.game;
+          const answer = button.dataset.answer;
+          const output = $("feedback-" + game);
+
+          if (answer === correct[game]) {
+            if (!solved.has(game)) {
+              solved.add(game);
+              points += 10;
+              output.textContent =
+                "¡Muy bien! 🎉 ¡Respuesta correcta! Ganaste 10 puntos.";
+            } else {
+              output.textContent = "¡Correcto otra vez! 🌟";
+            }
+
+            output.className = "feedback good";
+            updateStats();
+          } else {
+            output.textContent = "¡Casi! 💗 Inténtalo otra vez.";
+            output.className = "feedback try";
+          }
+        });
+      });
+
+      $("resetGames").addEventListener("click", () => {
+        document.querySelectorAll('[id^="feedback-"]').forEach(element => {
+          element.textContent = "";
+          element.className = "feedback";
+        });
+
+        solved.clear();
+        points = 0;
+        updateStats();
+      });
+
+      const tips = {
+        "😊 Feliz": "¡Qué bonito! ¿Quieres contar qué te hizo feliz?",
+        "😢 Triste": "Está bien sentirse triste. Puedes hablar con alguien de confianza.",
+        "😡 Enojado": "Podemos expresar el enojo sin lastimar. Respiremos despacio.",
+        "😨 Asustado": "Busca a una persona adulta de confianza si necesitas sentirte seguro.",
+        "😌 Tranquilo": "Disfruta esta calma y nota cómo respira tu cuerpo.",
+        "🤩 Emocionado": "¡Qué energía! ¿Qué es lo que más esperas hacer?"
+      };
+
+      document.querySelectorAll("[data-feeling]").forEach(button => {
+        button.addEventListener("click", () => {
+          const feeling = button.dataset.feeling;
+          $("emotionResult").textContent = feeling + ". " + tips[feeling];
+        });
+      });
+
+      $("breathBtn").addEventListener("click", () => {
+        $("breathResult").textContent =
+          "🌼 Inhala suavemente y luego sopla despacio. Repite tres veces a tu ritmo.";
+      });
+
+      $("activityForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        const box = $("createdActivity");
+        box.hidden = false;
+        box.replaceChildren();
+
+        const details = [
+          ["h3", "✨ " + $("actName").value.trim()],
+          ["p", "Área: " + $("actArea").value],
+          ["p", "Objetivo: " + $("actGoal").value.trim()],
+          ["p", "Materiales: " + ($("actMaterials").value.trim() || "Por definir")]
+        ];
+
+        details.forEach(([tag, text]) => {
+          const element = document.createElement(tag);
+          element.textContent = text;
+          box.appendChild(element);
+        });
+      });
+
+      let remaining = 60;
+      let timer = null;
+
+      function showTimer() {
+        const minutes = String(Math.floor(remaining / 60)).padStart(2, "0");
+        const seconds = String(remaining % 60).padStart(2, "0");
+        $("timerDisplay").textContent = minutes + ":" + seconds;
+      }
+
+      $("startTimer").addEventListener("click", () => {
+        if (timer !== null) return;
+
+        if (remaining === 0) {
+          remaining = 60;
+          showTimer();
+        }
+
+        $("timerMessage").textContent = "¡A movernos con cuidado! 🤸";
+
+        timer = setInterval(() => {
+          remaining--;
+          showTimer();
+
+          if (remaining <= 0) {
+            clearInterval(timer);
+            timer = null;
+            $("timerMessage").textContent =
+              "¡Pausa terminada! Toma aire y descansa. 🎉";
+          }
+        }, 1000);
+      });
+
+      $("pauseTimer").addEventListener("click", () => {
+        if (timer !== null) {
+          clearInterval(timer);
+          timer = null;
+          $("timerMessage").textContent =
+            "Pausa detenida. Puedes continuar cuando quieras.";
+        }
+      });
+
+      $("resetTimer").addEventListener("click", () => {
+        if (timer !== null) clearInterval(timer);
+
+        timer = null;
+        remaining = 60;
+        showTimer();
+        $("timerMessage").textContent = "";
+      });
+
+      const checks = [
+        ...document.querySelectorAll(".routine-check")
+      ];
+
+      function updateRoutine() {
+        const count = checks.filter(check => check.checked).length;
+
+        $("routineResult").textContent =
+          count === checks.length
+            ? "¡Rutina completada! ¡Qué gran día de exploración! 🏆"
+            : `${count} de ${checks.length} actividades completadas. ¡Vas muy bien! 🌱`;
+      }
+
+      checks.forEach(check => {
+        check.addEventListener("change", updateRoutine);
+      });
+
+      $("clearRoutine").addEventListener("click", () => {
+        checks.forEach(check => check.checked = false);
+        updateRoutine();
+      });
+
+      const ideas = [
+        ["🌞 🌷 🦋", "Un jardín lleno de flores y mariposas."],
+        ["🚀 🌙 ⭐", "Una aventura por el espacio."],
+        ["🐠 🐙 🐚", "Un mundo escondido bajo el mar."],
+        ["🏡 🌳 🐦", "Un lugar donde te gusta estar."]
+      ];
+
+      let ideaIndex = 0;
+
+      function setArt(index) {
+        ideaIndex = (index + ideas.length) % ideas.length;
+        $("artPreview").textContent = ideas[ideaIndex][0];
+        $("artIdea").textContent = ideas[ideaIndex][1];
+      }
+
+      document.querySelectorAll("[data-art]").forEach(button => {
+        button.addEventListener("click", () => {
+          setArt(Number(button.dataset.art));
+        });
+      });
+
+      $("newArt").addEventListener("click", () => {
+        setArt(ideaIndex + 1);
+      });
+
+      $("year").textContent = new Date().getFullYear();
+
+      updateStats();
+      showTimer();
+    })();
+  </script>
+
+</body>
+</html>
